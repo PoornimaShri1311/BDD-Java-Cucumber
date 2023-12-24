@@ -1,6 +1,6 @@
 Feature: AVIV Feature
 
-  @AVIVTest
+  @AVIVTest1
   Scenario: User Signup and Checkout
     Given I am on homepage url "BaseURL"
     Then I click "Register" button of "AVIV_Registration".""

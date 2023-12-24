@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
                 "html: target/cucumber-reports.html",
                 "rerun:target/failedrerun.txt", // Output file for failed scenarios
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-        tags = "@AVIVTest")
+        tags = "@AVIVTest1")
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 //    Parallel Testing can be handled using below code
