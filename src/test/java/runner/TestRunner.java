@@ -16,7 +16,6 @@ import org.testng.annotations.DataProvider;
         tags = "@AVIVTest")
 
 public class TestRunner extends AbstractTestNGCucumberTests {
-
 //    Parallel Testing can be handled using below code
    /* @Override
     @DataProvider(parallel = true)
