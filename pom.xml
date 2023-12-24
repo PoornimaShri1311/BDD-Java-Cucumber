@@ -40,6 +40,12 @@
             <artifactId>cucumber-testng</artifactId>
             <version>7.12.1</version>
         </dependency>
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.4.0</version> <!-- Use the latest version -->
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
@@ -98,11 +104,11 @@
             <version>1.13.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-<!--        <dependency>-->
-<!--            <groupId>com.aventstack</groupId>-->
-<!--            <artifactId>extentreports</artifactId>-->
-<!--            <version>5.0.9</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.aventstack</groupId>-->
+        <!--            <artifactId>extentreports</artifactId>-->
+        <!--            <version>5.0.9</version>-->
+        <!--        </dependency>-->
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.aventstack/extentreports-cucumber4-adapter &ndash;&gt;-->
         <!--        <dependency>-->
         <!--            <groupId>com.aventstack</groupId>-->
@@ -141,9 +147,17 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <parallel>methods</parallel> <!-- Set the parallel mode (options: none, methods, tests) -->
                     <threadCount>2</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
                     <forkCount>2</forkCount>
                     <reuseForks>true</reuseForks>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>2</value>
+                        </property>
+                    </properties>
                 </configuration>
+
             </plugin>
             <plugin>
                 <groupId>net.masterthought</groupId>
