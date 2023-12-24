@@ -144,20 +144,19 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-<!--                    <testFailureIgnore>true</testFailureIgnore>-->
-<!--                    <parallel>methods</parallel> &lt;!&ndash; Set the parallel mode (options: none, methods, tests) &ndash;&gt;-->
-<!--                    <threadCount>2</threadCount>-->
-<!--                    <perCoreThreadCount>false</perCoreThreadCount>-->
-<!--                    <forkCount>2</forkCount>-->
-<!--                    <reuseForks>true</reuseForks>-->
+                    <!--                    <testFailureIgnore>true</testFailureIgnore>-->
+                    <!--                    <parallel>methods</parallel> &lt;!&ndash; Set the parallel mode (options: none, methods, tests) &ndash;&gt;-->
+                    <!--                    <threadCount>2</threadCount>-->
+                    <!--                    <perCoreThreadCount>false</perCoreThreadCount>-->
+                    <!--                    <forkCount>2</forkCount>-->
+                    <!--                    <reuseForks>true</reuseForks>-->
                     <properties>
                         <property>
-<!--                            <name>dataproviderthreadcount</name>-->
-<!--                            <value>2</value>-->
+                            <!--                            <name>dataproviderthreadcount</name>-->
+                            <!--                            <value>2</value>-->
                         </property>
                     </properties>
                 </configuration>
-
             </plugin>
             <plugin>
                 <groupId>net.masterthought</groupId>
