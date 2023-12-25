@@ -1,6 +1,6 @@
 Feature: AVIV Feature
 
-  @AVIVTest1
+  @AVIVTest
   Scenario: User Signup and Checkout
     Given I am on homepage url "BaseURL"
     Then I click "Register" button of "AVIV_Registration".""
@@ -28,6 +28,8 @@ Feature: AVIV Feature
     Then I click "checkout" button of "AVIV_CheckoutPage".""
     Then I click "Edit" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And User waits for sleep time
+#    Then I click "termsofservice" button of "AVIV_CheckoutPage"."(Continue on Failure)"
+#    Then I click "checkout" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And I select "127" from "Country" of "AVIV_CheckoutPage"
     When I enter "City" in "City" field of "AVIV_CheckoutPage".""
     When I enter "Address" in "Address" field of "AVIV_CheckoutPage".""
@@ -44,20 +46,20 @@ Feature: AVIV Feature
   Scenario Outline: Invalid Signup Attempt
     Given I am on homepage url "BaseURL"
     Then I click "Register" button of "AVIV_Registration".""
-    When I enter "<Fname>" in "FirstName" field of "AVIV_Registration".""
-    When I enter "<LName>" in "LastName" field of "AVIV_Registration".""
-    When I enter "<EmailID>" in "Email" field of "AVIV_Registration".""
-    When I enter "<PWD>" in "Password" field of "AVIV_Registration".""
-    When I enter "<ConfirmPwd>" in "ConfirmPassword" field of "AVIV_Registration".""
+    When User enters <FirstName> in "FirstName" field of "AVIV_Registration".""
+    When User enters <LastName> in "LastName" field of "AVIV_Registration".""
+    When User enters <Email> in "Email" field of "AVIV_Registration".""
+    When User enters <Password> in "Password" field of "AVIV_Registration".""
+    When User enters <ConfirmPassword> in "ConfirmPassword" field of "AVIV_Registration".""
     Then I click "Register_Button" button of "AVIV_Registration".""
     And User waits for "Reg_Failure" element to be "displayed" in "AVIV_Registration".""
     Examples:
-      | FirstName | LastName  | Email                     | Password  | ConfirmPassword |
-      | "John"    | "Doe"     | "john.doe@example.com"    | "Pass123" | "Pass123"       |
-      | "Alice"   | "Smith"   | "alice.smith@example.com" | "Pass456" | "Pass456"       |
-      | "Bob"     | "Johnson" | "bob.johnson@example.com" | "Pass789" | "Pass789"       |
+      | FirstName | LastName  | Email                  | Password  | ConfirmPassword |
+      | "John"    | "Doe"     | "john.doe@example.com" | "Pass123" | "Pass123"       |
+      | "Alice"   | "Smith"   | "john.doe@example.com" | "Pass456" | "Pass456"       |
+      | "Bob"     | "Johnson" | "john.doe@example.com" | "Pass789" | "Pass789"       |
 
-  @AVIVTest1
+  @AVIVTest
   Scenario: Existing User Login and Checkout
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
@@ -78,6 +80,8 @@ Feature: AVIV Feature
     Then I click "checkout" button of "AVIV_CheckoutPage".""
     Then I click "Edit" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And User waits for sleep time
+#    Then I click "termsofservice" button of "AVIV_CheckoutPage"."(Continue on Failure)"
+#    Then I click "checkout" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And I select "127" from "Country" of "AVIV_CheckoutPage"
     When I enter "City" in "City" field of "AVIV_CheckoutPage".""
     When User generates random "long" value and enters in "Address" field of "AVIV_CheckoutPage"
@@ -94,7 +98,7 @@ Feature: AVIV Feature
     And User waits for "Success" element to be "displayed" in "AVIV_CheckoutPage".""
     And User reads "text" and stores "OrderNo" of "AVIV_CheckoutPage"
 
-  @AVIVTest1
+  @AVIVTest
   Scenario: Verify Cart Functionality
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
@@ -131,6 +135,8 @@ Feature: AVIV Feature
     And User waits for sleep time
     Then I click "Edit" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And User waits for sleep time
+#    Then I click "termsofservice" button of "AVIV_CheckoutPage"."(Continue on Failure)"
+#    Then I click "checkout" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And I select "127" from "Country" of "AVIV_CheckoutPage"
     When I enter "City" in "City" field of "AVIV_CheckoutPage".""
     When User generates random "long" value and enters in "Address" field of "AVIV_CheckoutPage"

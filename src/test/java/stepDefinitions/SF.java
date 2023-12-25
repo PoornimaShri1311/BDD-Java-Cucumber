@@ -186,7 +186,7 @@ public class SF extends testBase {
     public void iClickButtonOf(String elementName, String pageName, String continueOnFailure) {
         WebElement element = readExcelToFindElementwithMap(elementName, pageName);
         try {
-            if (element != null) {
+            if (element != null || element.isDisplayed()) {
                 highlight(element);
                 element.click();
             } else {
@@ -251,9 +251,23 @@ public class SF extends testBase {
         }
     }
 
-//    @When("I enter \"([^\\\"]*)\" in \"([^\\\"]*)\" field of \"([^\\\"]*)\".\"([^\\\"]*)\"$")
-//    public void iEnterInFieldOf2(String arg0, String arg1, String arg2, String arg3) {
-//    }
+    @When("User enters \"([^\\\"]*)\" in \"([^\\\"]*)\" field of \"([^\\\"]*)\".\"([^\\\"]*)\"$")
+    public void userEntersFirstNameInFieldOf(String fieldValue, String elementName, String pageName, String continueOnFailure) {
+        WebElement element = readExcelToFindElementwithMap(elementName, pageName);
+        try {
+            if (element != null) {
+                highlight(element);
+                element.clear();
+                element.sendKeys(fieldValue);
+            } else {
+                handleFailure(continueOnFailure);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            handleFailure(continueOnFailure);
+        }
+    }
 
     private WebElement readExcelToFindElementwithMap(String elementNameToFind, String pageName) {
 //        String filePath = "C:\\Users\\Poorn\\OneDrive\\Desktop\\AVIV\\Aviv-QA-Web-Technical-Test\\src\\test\\java\\pages\\Pages.xlsx";
@@ -389,7 +403,10 @@ public class SF extends testBase {
 
     private WebElement findElement(String elementName, String locatorType, String locatorValue) {
         By by = getBy(elementName, locatorType, locatorValue);
-        return baseTest.driver.findElement(by);
+        WebDriverWait wait = new WebDriverWait(baseTest.driver, Duration.ofSeconds(10));
+//        return baseTest.driver.findElement(by);
+        // Wait for the element to be present in the DOM and visible on the page
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     private String writeIntoExcel(String readValue, String elementNameToFind, String pageName) {
@@ -447,6 +464,7 @@ public class SF extends testBase {
 
         return randomValue;
     }
+
     private void handleFailure(String continueOnFailure) {
         if ("(Continue on Failure)".equalsIgnoreCase(continueOnFailure)) {
             System.out.println("Continue on failure. Test execution continues.");
