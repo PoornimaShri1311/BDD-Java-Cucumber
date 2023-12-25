@@ -52,7 +52,7 @@ Feature: AVIV Feature
     Then I click "Register_Button" button of "AVIV_Registration".""
     And User waits for "Reg_Failure" element to be "displayed" in "AVIV_Registration".""
     Examples:
-      | FirstName | LastName  | Email                  | Password  | ConfirmPassword |
+      | FirstName | LastName  | Email             | Password  | ConfirmPassword |
       | "John"    | "Doe"     | "email@gmail.com" | "Pass123" | "Pass123"       |
       | "Alice"   | "Smith"   | "email@gmail.com" | "Pass456" | "Pass456"       |
       | "Bob"     | "Johnson" | "email@gmail.com" | "Pass789" | "Pass789"       |
