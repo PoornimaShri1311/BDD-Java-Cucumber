@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {"pretty",
                 "json:target/cucumber.json",
                 "junit:target/JunitReports/report.xml",
-                "html: target/cucumber-reports.html",
+                "html: targetCucumber/cucumber-reports.html",
                 "rerun:target/failedrerun.txt", // Output file for failed scenarios
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         tags = "@AVIVTest")

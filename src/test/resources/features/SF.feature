@@ -53,9 +53,9 @@ Feature: AVIV Feature
     And User waits for "Reg_Failure" element to be "displayed" in "AVIV_Registration".""
     Examples:
       | FirstName | LastName  | Email                  | Password  | ConfirmPassword |
-      | "John"    | "Doe"     | "john.doe@example.com" | "Pass123" | "Pass123"       |
-      | "Alice"   | "Smith"   | "john.doe@example.com" | "Pass456" | "Pass456"       |
-      | "Bob"     | "Johnson" | "john.doe@example.com" | "Pass789" | "Pass789"       |
+      | "John"    | "Doe"     | "email@gmail.com" | "Pass123" | "Pass123"       |
+      | "Alice"   | "Smith"   | "email@gmail.com" | "Pass456" | "Pass456"       |
+      | "Bob"     | "Johnson" | "email@gmail.com" | "Pass789" | "Pass789"       |
 
   @AVIVTest
   Scenario: Existing User Login and Checkout

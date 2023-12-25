@@ -42,7 +42,7 @@ public class SF extends testBase {
     public void tearDown() throws IOException {
         baseTest.tearDown();
     }
-    
+
     @AfterStep(order = 1)
     public void addScreenshot(Scenario scenario) throws IOException {
         baseTest.addScreenshot(scenario);
@@ -402,10 +402,10 @@ public class SF extends testBase {
 
     private WebElement findElement(String elementName, String locatorType, String locatorValue) {
         By by = getBy(elementName, locatorType, locatorValue);
-        WebDriverWait wait = new WebDriverWait(baseTest.driver, Duration.ofSeconds(10));
-//        return baseTest.driver.findElement(by);
+//        WebDriverWait wait = new WebDriverWait(baseTest.driver, Duration.ofSeconds(10));
+        return baseTest.driver.findElement(by);
         // Wait for the element to be present in the DOM and visible on the page
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+//        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     private String writeIntoExcel(String readValue, String elementNameToFind, String pageName) {
