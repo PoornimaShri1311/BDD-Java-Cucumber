@@ -2,7 +2,6 @@ Feature: AVIV Feature
 
   @AVIVTest
   Scenario: User Signup and Checkout
-    
     Given I am on homepage url "BaseURL"
     Then I click "Register" button of "AVIV_Registration".""
     When I enter "FirstName" in "FirstName" field of "AVIV_Registration".""
