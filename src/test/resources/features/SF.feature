@@ -127,7 +127,6 @@ Feature: AVIV Feature
     Then I click "Shopping Cart" button of "AVIV_HomePage".""
     And User waits for sleep time
     Then User verify if "ItemQuantity" is "displayed" in "AVIV_CheckoutPage".""
-#    Then User verify if "Remove" is "not displayed" in "AVIV_HomePage".""
     Then I click "termsofservice" button of "AVIV_CheckoutPage".""
     Then I click "checkout" button of "AVIV_CheckoutPage".""
     And User waits for sleep time
