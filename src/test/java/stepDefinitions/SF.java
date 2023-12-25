@@ -42,8 +42,7 @@ public class SF extends testBase {
     public void tearDown() throws IOException {
         baseTest.tearDown();
     }
-
-
+    
     @AfterStep(order = 1)
     public void addScreenshot(Scenario scenario) throws IOException {
         baseTest.addScreenshot(scenario);
