@@ -58,6 +58,7 @@ Feature: AVIV Feature
       | "Alice"   | "Smith"   | "email@gmail.com" | "Pass456" | "Pass456"       |
       | "Bob"     | "Johnson" | "email@gmail.com" | "Pass789" | "Pass789"       |
 
+
   @AVIVTest
   Scenario: Existing User Login and Checkout
     Given I am on homepage url "BaseURL"
