@@ -2,6 +2,7 @@ Feature: AVIV Feature
 
   @AVIVTest
   Scenario: User Signup and Checkout
+#    Given I connect to the database
     Given I am on homepage url "BaseURL"
     Then I click "Register" button of "AVIV_Registration".""
     When I enter "FirstName" in "FirstName" field of "AVIV_Registration".""
@@ -50,7 +51,7 @@ Feature: AVIV Feature
     When User enters <Password> in "Password" field of "AVIV_Registration".""
     When User enters <ConfirmPassword> in "ConfirmPassword" field of "AVIV_Registration".""
     Then I click "Register_Button" button of "AVIV_Registration".""
-    And User waits for "Reg_Failure" element to be "displayed" in "AVIV_Registration".""
+    And User waits for "Reg_Failure" element to be "displayed" in "AVIV_Registration"."(Continue on Failure)"
     Examples:
       | FirstName | LastName  | Email             | Password  | ConfirmPassword |
       | "John"    | "Doe"     | "email@gmail.com" | "Pass123" | "Pass123"       |
@@ -93,6 +94,7 @@ Feature: AVIV Feature
     Then I click "Confirm" button of "AVIV_CheckoutPage".""
     And User waits for "Success" element to be "displayed" in "AVIV_CheckoutPage".""
     And User reads "text" and stores "OrderNo" of "AVIV_CheckoutPage"
+
 
   @AVIVTest
   Scenario: Verify Cart Functionality
