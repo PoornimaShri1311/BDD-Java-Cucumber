@@ -1,6 +1,6 @@
 Feature: AVIV Feature
 
-  @AVIVTest
+  @AVIVTest1
   Scenario: User Signup and Checkout
 #    Given I connect to the database
     Given I am on homepage url "BaseURL"
@@ -29,6 +29,8 @@ Feature: AVIV Feature
     Then I click "checkout" button of "AVIV_CheckoutPage".""
     Then I click "Edit" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And User waits for sleep time
+    Then I click "termsofservice" button of "AVIV_CheckoutPage"."(Continue on Failure)"
+    Then I click "checkout" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And I select "127" from "Country" of "AVIV_CheckoutPage"
     When I enter "City" in "City" field of "AVIV_CheckoutPage".""
     When I enter "Address" in "Address" field of "AVIV_CheckoutPage".""
@@ -58,7 +60,7 @@ Feature: AVIV Feature
       | "Alice"   | "Smith"   | "email@gmail.com" | "Pass456" | "Pass456"       |
       | "Bob"     | "Johnson" | "email@gmail.com" | "Pass789" | "Pass789"       |
 
-  @AVIVTest
+  @AVIVTest1
   Scenario: Existing User Login and Checkout
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
@@ -96,7 +98,7 @@ Feature: AVIV Feature
     And User reads "text" and stores "OrderNo" of "AVIV_CheckoutPage"
 
 
-  @AVIVTest
+  @AVIVTest1
   Scenario: Verify Cart Functionality
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
