@@ -1,6 +1,6 @@
 Feature: AVIV Feature
 
-  @AVIVTest1
+  @AVIVTest
   Scenario: User Signup and Checkout
 #    Given I connect to the database
     Given I am on homepage url "BaseURL"
@@ -60,7 +60,7 @@ Feature: AVIV Feature
       | "Alice"   | "Smith"   | "email@gmail.com" | "Pass456" | "Pass456"       |
       | "Bob"     | "Johnson" | "email@gmail.com" | "Pass789" | "Pass789"       |
 
-  @AVIVTest1
+  @AVIVTest
   Scenario: Existing User Login and Checkout
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
@@ -98,7 +98,7 @@ Feature: AVIV Feature
     And User reads "text" and stores "OrderNo" of "AVIV_CheckoutPage"
 
 
-  @AVIVTest1
+  @AVIVTest
   Scenario: Verify Cart Functionality
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
