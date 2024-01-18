@@ -29,8 +29,6 @@ Feature: AVIV Feature
     Then I click "checkout" button of "AVIV_CheckoutPage".""
     Then I click "Edit" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And User waits for sleep time
-    Then I click "termsofservice" button of "AVIV_CheckoutPage"."(Continue on Failure)"
-    Then I click "checkout" button of "AVIV_CheckoutPage"."(Continue on Failure)"
     And I select "127" from "Country" of "AVIV_CheckoutPage"
     When I enter "City" in "City" field of "AVIV_CheckoutPage".""
     When I enter "Address" in "Address" field of "AVIV_CheckoutPage".""
@@ -96,7 +94,6 @@ Feature: AVIV Feature
     Then I click "Confirm" button of "AVIV_CheckoutPage".""
     And User waits for "Success" element to be "displayed" in "AVIV_CheckoutPage".""
     And User reads "text" and stores "OrderNo" of "AVIV_CheckoutPage"
-
 
   @AVIVTest
   Scenario: Verify Cart Functionality
