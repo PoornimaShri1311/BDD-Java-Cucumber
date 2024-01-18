@@ -4,14 +4,12 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import lombok.Getter;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 
 import java.io.File;
 import java.io.FileReader;
@@ -19,54 +17,47 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+@Getter
 public class BaseTest {
-    public WebDriver driver;
+    public static WebDriver driver;
     String currentDirectory = System.getProperty("user.dir");
-    public static Properties prop = new Properties();
-    public static FileReader fr;
-    String fileFolder = currentDirectory + "\\Screenshots\\";
     public Properties props = new Properties();
     public String configFolder = currentDirectory + "\\config.properties";
-    Properties dataprops = new Properties();
+    private static final InvalidArgumentException ILLEGAL_ARGUMENT_EXCEPTION = new InvalidArgumentException("Invalid browser.");
 
-    @Before
-    public void setup() throws IOException {
-        FileReader reader = new FileReader(configFolder);
-        props.load(reader);
+    @Before(order = 0)
+    public void setup() {
+        //  ExtentSparkReporter sparkReporter = ExtentManager.getSparkReporter();
+        try {
+            FileReader reader = new FileReader(configFolder);
+            props.load(reader);
+            initializeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void initializeDriver() {
         if (props.getProperty("Browser").equals("chrome")) {
-            setupChromeDriver();
+            driver = DriverFactory.setupChromeDriver();
         }
         if (props.get("Browser").equals("edge")) {
-            setupEdgeDriver();
+            driver = DriverFactory.setupEdgeDriver();
         }
         if (props.getProperty("Browser").equals("Default")) {
-            setupDefaultDriver();
+            DriverFactory.setupDefaultDriver();
         }
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
     }
 
-    private void setupDefaultDriver() {
-        System.setProperty("webdriver.edge.driver", currentDirectory + "/src/test/resources/drivers/msedgedriver.exe");            // Start Edge Session
-        driver = new EdgeDriver();
-    }
 
-    private void setupEdgeDriver() {
-        System.setProperty("webdriver.edge.driver", currentDirectory + "/src/test/resources/drivers/msedgedriver.exe");
-        driver = new EdgeDriver();
-    }
-
-    private void setupChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", currentDirectory + "/src/test/resources/drivers/chromedriver.exe");
-        System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-        ChromeOptions ops = new ChromeOptions();
-        ops.addArguments("--disable-notifications");
-        ops.addArguments("--start-maximized");
-        ops.addArguments("--use-fake-ui-for-media-stream");
-        ops.addArguments("--disable-user-media-security=true");
-        driver = new ChromeDriver(ops);
+    @Before(order = 1)
+    public void scenarioSetUp(Scenario scenario) {
+        //    Properties dataprops = new Properties();
+        System.err.println(scenario);
     }
 
 
@@ -84,7 +75,7 @@ public class BaseTest {
     }
 
     @After(order = 0)
-    public void tearDown() throws IOException {
+    public void tearDown() {
         driver.close();
         driver.quit();
     }
@@ -103,5 +94,9 @@ public class BaseTest {
                 scenario.attach(screenshot, "image/png", "image");
             }
         }
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 }
