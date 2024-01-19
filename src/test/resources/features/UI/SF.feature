@@ -1,6 +1,6 @@
 Feature: AVIV Feature
 
-  @AVIVTest
+  @AVIVTest123
   Scenario: User Signup and Checkout
 #    Given I connect to the database
     Given I am on homepage url "BaseURL"
@@ -41,7 +41,7 @@ Feature: AVIV Feature
     Then I click "Confirm" button of "AVIV_CheckoutPage".""
     And User waits for "Success" element to be "displayed" in "AVIV_CheckoutPage".""
 
-  @AVIVTest
+  @AVIVTest123
   Scenario Outline: Invalid Signup Attempt
     Given I am on homepage url "BaseURL"
     Then I click "Register" button of "AVIV_Registration".""
@@ -58,7 +58,7 @@ Feature: AVIV Feature
       | "Alice"   | "Smith"   | "email@gmail.com" | "Pass456" | "Pass456"       |
       | "Bob"     | "Johnson" | "email@gmail.com" | "Pass789" | "Pass789"       |
 
-  @AVIVTest
+  @AVIVTest123
   Scenario: Existing User Login and Checkout
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
@@ -95,7 +95,7 @@ Feature: AVIV Feature
     And User waits for "Success" element to be "displayed" in "AVIV_CheckoutPage".""
     And User reads "text" and stores "OrderNo" of "AVIV_CheckoutPage"
 
-  @AVIVTest
+  @AVIVTest123
   Scenario: Verify Cart Functionality
     Given I am on homepage url "BaseURL"
     Then I click "Log in" button of "AVIV_Registration".""
