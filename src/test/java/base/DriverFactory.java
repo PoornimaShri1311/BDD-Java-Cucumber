@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 
 public class DriverFactory {
@@ -15,6 +16,7 @@ public class DriverFactory {
         System.setProperty("webdriver.chrome.driver", currentDirectory + "/src/test/resources/drivers/chromedriver.exe");
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
         ChromeOptions ops = new ChromeOptions();
+        ops.addArguments("--headless");
         ops.addArguments("--disable-notifications");
         ops.addArguments("--start-maximized");
         ops.addArguments("--use-fake-ui-for-media-stream");
@@ -24,7 +26,9 @@ public class DriverFactory {
 
     static EdgeDriver setupEdgeDriver() {
         System.setProperty("webdriver.edge.driver", currentDirectory + "/src/test/resources/drivers/msedgedriver.exe");
-        return new EdgeDriver();
+        EdgeOptions E_OPTIONS = new EdgeOptions();
+        E_OPTIONS.addArguments("--headless");
+        return new EdgeDriver(E_OPTIONS);
     }
 
     static void setupDefaultDriver() {
