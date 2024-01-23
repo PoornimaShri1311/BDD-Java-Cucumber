@@ -1,9 +1,13 @@
 Feature: AVIV Feature
+  Description: The purpose of this feature file is to test few scenarios of AVIV demo page
+
+  Background: User is launching the url
+    Given I am on homepage url "BaseURL"
 
   @AVIVTest
   Scenario: User Signup and Checkout
 #    Given I connect to the database
-    Given I am on homepage url "BaseURL"
+    
     Then I click "Register" button of "AVIV_Registration".""
     When I enter "FirstName" in "FirstName" field of "AVIV_Registration".""
     When I enter "LastName" in "LastName" field of "AVIV_Registration".""
@@ -43,7 +47,7 @@ Feature: AVIV Feature
 
   @AVIVTest
   Scenario Outline: Invalid Signup Attempt
-    Given I am on homepage url "BaseURL"
+    
     Then I click "Register" button of "AVIV_Registration".""
     When User enters <FirstName> in "FirstName" field of "AVIV_Registration".""
     When User enters <LastName> in "LastName" field of "AVIV_Registration".""
@@ -60,7 +64,7 @@ Feature: AVIV Feature
 
   @AVIVTest
   Scenario: Existing User Login and Checkout
-    Given I am on homepage url "BaseURL"
+    
     Then I click "Log in" button of "AVIV_Registration".""
     When I enter "Email" in "Email" field of "AVIV_LoginPage".""
     When I enter "Password" in "Password" field of "AVIV_LoginPage".""
@@ -95,9 +99,9 @@ Feature: AVIV Feature
     And User waits for "Success" element to be "displayed" in "AVIV_CheckoutPage".""
     And User reads "text" and stores "OrderNo" of "AVIV_CheckoutPage"
 
-  @AVIVTest
+  @AVIVTest @Smoke
   Scenario: Verify Cart Functionality
-    Given I am on homepage url "BaseURL"
+    
     Then I click "Log in" button of "AVIV_Registration".""
     When I enter "Email" in "Email" field of "AVIV_LoginPage".""
     When I enter "Password" in "Password" field of "AVIV_LoginPage".""

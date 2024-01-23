@@ -1,5 +1,6 @@
 package base;
 
+import Utilities.ConfigReader;
 import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -13,10 +14,10 @@ public class DriverFactory {
     static String currentDirectory = System.getProperty("user.dir");
 
     static ChromeDriver setupChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", currentDirectory + "/src/test/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", currentDirectory + ConfigReader.getProperty("webdriver.chrome.driver"));
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
         ChromeOptions ops = new ChromeOptions();
-        ops.addArguments("--headless");
+//        ops.addArguments("--headless");
         ops.addArguments("--disable-notifications");
         ops.addArguments("--start-maximized");
         ops.addArguments("--use-fake-ui-for-media-stream");
@@ -25,9 +26,9 @@ public class DriverFactory {
     }
 
     static EdgeDriver setupEdgeDriver() {
-        System.setProperty("webdriver.edge.driver", currentDirectory + "/src/test/resources/drivers/msedgedriver.exe");
+        System.setProperty("webdriver.edge.driver", currentDirectory + ConfigReader.getProperty("webdriver.edge.driver"));
         EdgeOptions E_OPTIONS = new EdgeOptions();
-        E_OPTIONS.addArguments("--headless");
+//        E_OPTIONS.addArguments("--headless");
         return new EdgeDriver(E_OPTIONS);
     }
 

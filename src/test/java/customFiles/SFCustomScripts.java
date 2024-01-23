@@ -119,9 +119,9 @@ public class SFCustomScripts extends BaseTest {
     }
 
     private static String writeIntoExcel(String readValue, String elementNameToFind, String pageName) {
-//        String filePath = "C:\\Users\\Poorn\\OneDrive\\Desktop\\AVIV\\Aviv-QA-Web-Technical-Test\\src\\test\\java\\pages\\Pages.xlsx";
+//        
         String currentDirectory = System.getProperty("user.dir");
-        String filePath = currentDirectory + "\\src\\test\\java\\pages\\Pages.xlsx";
+        String filePath = currentDirectory + ConfigReader.getProperty("pageObjectsPath");
         String sheetName = pageName;
         try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
             Workbook workbook = new XSSFWorkbook(fileInputStream);
@@ -195,7 +195,6 @@ public class SFCustomScripts extends BaseTest {
         logger.info(arg1 + " is launched as expected!");
     }
 
-
     public void setUp() throws IOException {
 //        BaseTest baseTest = new BaseTest();
         baseTest.setup();
@@ -240,9 +239,9 @@ public class SFCustomScripts extends BaseTest {
     }
 
     private static WebElement readExcelToFindElementwithMap(String elementNameToFind, String pageName) {
-//        String filePath = "C:\\Users\\Poorn\\OneDrive\\Desktop\\AVIV\\Aviv-QA-Web-Technical-Test\\src\\test\\java\\pages\\Pages.xlsx";
+//        
         String currentDirectory = System.getProperty("user.dir");
-        String filePath = currentDirectory + "\\src\\test\\java\\pages\\Pages.xlsx";
+        String filePath = currentDirectory + ConfigReader.getProperty("pageObjectsPath");
         String sheetName = pageName;
 
         try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
@@ -311,6 +310,7 @@ public class SFCustomScripts extends BaseTest {
         try {
             if (element != null || element.isDisplayed()) {
                 highlight(element);
+
                 element.click();
                 logger.info(elementName + " clicked!");
             } else {
